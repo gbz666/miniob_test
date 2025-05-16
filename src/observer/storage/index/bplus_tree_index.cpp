@@ -89,7 +89,9 @@ RC BplusTreeIndex::delete_entry(const char *record, const RID *rid)
 {
   return index_handler_.delete_entry(record + field_meta_.offset(), rid);
 }
-
+RC BplusTreeIndex::transform(const IndexMeta* name_,const FieldMeta* field_){
+  return Index::init(*name_, *field_);
+}
 IndexScanner *BplusTreeIndex::create_scanner(
     const char *left_key, int left_len, bool left_inclusive, const char *right_key, int right_len, bool right_inclusive)
 {
